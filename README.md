@@ -1,1 +1,3 @@
-# js_boilerplate_v1
+# SMSDraw
+
+Simple learning react project.

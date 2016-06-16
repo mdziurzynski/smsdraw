@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate_v1",
+  "name": "SMSDraw",
   "version": "1.0.0",
-  "description": "Yet another react... boilerplate",
+  "description": "TODO;)",
   "scripts": {
     "start-dev": "node server.js",
     "lint": "eslint src",
