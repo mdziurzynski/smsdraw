@@ -6,8 +6,9 @@
     "start-dev": "node server.js",
     "lint": "eslint src",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "build": "webpack", 
-    "clean": "rm build/bundle.js"
+    "build": "webpack",
+    "build-prod": "webpack --config webpack.config.production.js",
+    "clean": "rm build/*"
   },
   "author": "Mikołaj Dziurzyński",
   "license": "MIT",

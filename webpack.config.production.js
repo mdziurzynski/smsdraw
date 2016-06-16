@@ -1,28 +1,25 @@
-'use strict'
+'use strict';
 
 var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'sourcemap',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
     './src/index'
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    filename: 'bundle.min.js',
+    sourceMapFilename: 'bundle.map.js',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.optimize.UglifyJsPlugin({minimize: true})
   ],
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
+      loader: 'babel',
     }, {
       test: /\.css$/,
       loaders: ['style', 'css']
