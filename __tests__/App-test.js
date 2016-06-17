@@ -3,16 +3,20 @@ jest.unmock('../src/components/App');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import app from '../src/components/App';
+import App from '../src/components/App';
 
-describe('App', () => {
-  it('hello word text returned by App', () => {
-    const helloWorld = TestUtils.renderIntoDocument(
-      app()
-    );
+describe('App stages container', () => {
 
-    const helloWorldNode = ReactDOM.findDOMNode(helloWorld);
-
-    expect(helloWorldNode.textContent).toEqual('Hello world!');
+  it('Initialised with stage = 0', () => {
+    const appElement = TestUtils.renderIntoDocument(
+      <App />
+    );  
+    expect(appElement.state.stage).toEqual(0);
+  });
+  it('Changes stage based on given props', () => {
+    const appElement = TestUtils.renderIntoDocument(
+      <App stage={2} />
+    );  
+    expect(appElement.state.stage).toEqual(2);
   });
 });
