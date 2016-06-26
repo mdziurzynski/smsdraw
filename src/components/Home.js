@@ -1,7 +1,7 @@
 // @flow
 import React, { Element as ReactElement } from 'react';
 
-export default class StageZero extends React.Component {
+export default class Home extends React.Component {
   static propTypes: Object = {
     stage: React.PropTypes.number.isRequired,
     styles: React.PropTypes.object.isRequired,
@@ -11,7 +11,7 @@ export default class StageZero extends React.Component {
     return (
       <div style={Object.assign({}, this.props.styles, { backgroundColor: 'grey' })}>
         <div style={this.props.visibilityStyle}>
-          Stage 0
+          Home
         </div>
       </div>
     );

@@ -1,7 +1,6 @@
 // @flow
 import React, { Element as ReactElement } from 'react';
 import StageIdentifier from './StageIdentifier';
-import StageContainer from './StageContainer';
 
 const styles = {
   main: {
@@ -41,12 +40,6 @@ const styles = {
     MozTransition: 'width 0.5s ease-in-out',
     OTransition: 'width 0.5s ease-in-out',
     transition: 'width 0.5s ease-in-out',
-  },
-  activeStageContainer: {
-    width: '100%',
-  },
-  closedStageContainer: {
-    width: '0%',
   },
   visibleContent: {
     visibility: 'visible',
@@ -99,17 +92,7 @@ export default class App extends React.Component {
           </div>
         </div>
         <div style={styles.mainBottom}>
-          {this.state.stages.map((stageNum:number, i:number) =>
-            <StageContainer
-              {...this.state}
-              key={i}
-              styles={Object.assign({},
-                styles.stageContainer,
-                this.state.stage === stageNum ? styles.activeStageContainer : styles.closedStageContainer)}
-              visibilityStyle={
-                this.state.stage === stageNum ? styles.visibleContent : styles.invisibleContent}
-            />
-          )}
+          {this.props.children}
         </div>
       </div>
     );

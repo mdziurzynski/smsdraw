@@ -4,7 +4,7 @@
   "description": "TODO;)",
   "scripts": {
     "start-dev": "node server.js",
-    "lint": "eslint src",
+    "lint": "eslint src --fix",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "jest --verbose",
     "build": "webpack",
@@ -15,7 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "react-router": "^2.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",

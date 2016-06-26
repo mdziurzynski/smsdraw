@@ -1,5 +1,6 @@
 // @flow
 import React, { Element as ReactElement } from 'react';
+import { Link } from 'react-router';
 
 export default class StageIdentifier extends React.Component {
   static propTypes: Object = {
@@ -15,11 +16,14 @@ export default class StageIdentifier extends React.Component {
     this.props.changeStage(this.props.stageNum);
   }
   render(): ReactElement {
+    let linkTo = this.props.stageNum === 0 ? '/' : `/stage${this.props.stageNum}`;
     return (
-      <div
-        style={this.props.styles}
-        onClick={this.onClick}
-      >{this.props.stageNum}</div>
+      <Link to={linkTo}>
+        <div
+          style={this.props.styles}
+          onClick={this.onClick}
+        >{this.props.stageNum}</div>
+      </Link>
     );
   }
 }
