@@ -61,6 +61,11 @@ export default class App extends React.Component {
   static defaultProps: Object = {
     stage: 0,
     stages: [0, 1, 2, 3],
+    userData: {
+      username: undefined,
+      password: undefined,
+      smsAvailable: undefined,
+    },
   };
   constructor(props: Object) {
     super(props);
@@ -69,10 +74,20 @@ export default class App extends React.Component {
   state: Object = {
     stage: this.props.stage,
     stages: this.props.stages,
+    userData: this.props.smsAvailable,
   };
   changeStage(stageNumber:number): void {
     this.setState({
       stage: stageNumber,
+    });
+  }
+  handleUserData(username:string, password:string, smsAvailable:number) {
+    this.setState({
+      userData: {
+        username,
+        password,
+        smsAvailable,
+      },
     });
   }
   render(): ReactElement {
@@ -92,7 +107,11 @@ export default class App extends React.Component {
           </div>
         </div>
         <div style={styles.mainBottom}>
-          {this.props.children}
+          {React.cloneElement(this.props.children, {
+            stage: this.state.stage,
+            setUserData: this.handleUserData,
+          })
+          }
         </div>
       </div>
     );

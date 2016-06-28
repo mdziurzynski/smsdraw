@@ -1,6 +1,5 @@
 // @flow
 import React, { Element as ReactElement } from 'react';
-import StageZero from './StageZero';
 import StageOne from './StageOne';
 import StageTwo from './StageTwo';
 import StageThree from './StageThree';

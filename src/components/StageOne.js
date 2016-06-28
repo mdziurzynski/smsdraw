@@ -10,9 +10,7 @@ export default class StageOne extends React.Component {
   render(): ReactElement {
     return (
       <div style={Object.assign({}, this.props.styles, { backgroundColor: 'grey' })}>
-        <div style={this.props.visibilityStyle}>
-          Stage 1
-        </div>
+        Stage 1
       </div>
     );
   }
