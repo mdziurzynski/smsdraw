@@ -21,15 +21,18 @@ export default withRouter(class App extends React.Component {
   };
   constructor(props: Object) {
     super(props);
-    this.changeStage = this.changeStage.bind(this);
+    this.handleChangeStage = this.handleChangeStage.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleGoToStageTwo = this.handleGoToStageTwo.bind(this);
   }
   state: Object = {
     stage: this.props.stage,
     stages: this.props.stages,
     userData: this.props.smsAvailable,
+    messageTitle: '',
+    message: 'Wylosowaliśmy dla Ciebie: ',
   };
-  changeStage(stageNumber:number): void {
+  handleChangeStage(stageNumber:number): void {
     this.setState({
       stage: stageNumber,
     });
@@ -65,6 +68,18 @@ export default withRouter(class App extends React.Component {
       alert('connection problems');
     });
   }
+  handleGoToStageTwo(): void {
+    if (document.getElementById('messageTitle').value !== '') {
+      this.setState({
+        stage: 2,
+      });
+    }
+  }
+  handleTitle(event) {
+    this.setState({
+      messageTitle: event.target.value,
+    });
+  }
   render(): ReactElement {
     return (
       <div style={styles.main}>
@@ -76,7 +91,7 @@ export default withRouter(class App extends React.Component {
                 key={i}
                 stageNum={stageNum}
                 styles={stageNum <= this.state.stage ? styles.activeStage : styles.stage}
-                changeStage={this.changeStage}
+                changeStage={this.handleChangeStage}
               />
             )}
           </div>
@@ -84,7 +99,11 @@ export default withRouter(class App extends React.Component {
         <div style={styles.mainBottom}>
           {this.props.children && React.cloneElement(this.props.children, {
             stage: this.state.stage,
+            messageTitle: this.state.messageTitle,
+            message: this.state.message,
             login: this.handleLogin,
+            goToStageTwo: this.handleGoToStageTwo,
+            changeTitle: this.handleTitle,
           })
           }
         </div>
