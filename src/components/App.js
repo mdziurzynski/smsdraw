@@ -21,9 +21,11 @@ export default withRouter(class App extends React.Component {
   };
   constructor(props: Object) {
     super(props);
+    console.log(this.props.location.pathname);
     this.handleChangeStage = this.handleChangeStage.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleGoToStageTwo = this.handleGoToStageTwo.bind(this);
+    this.handleTitle = this.handleTitle.bind(this);
   }
   state: Object = {
     stage: this.props.stage,
@@ -73,9 +75,11 @@ export default withRouter(class App extends React.Component {
       this.setState({
         stage: 2,
       });
+      this.props.router.push('stage2');
     }
   }
   handleTitle(event) {
+    console.log(event.target.value);
     this.setState({
       messageTitle: event.target.value,
     });

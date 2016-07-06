@@ -16,8 +16,9 @@ function StageOne(props): ReactElement {
       <div>Message:</div>
       <textarea
         id="message"
+        value={`${props.messageTitle} \n${props.message}: Jan Kowalski`}
         readOnly
-      >{props.messageTitle + '\n' + props.message + 'Jan Kowalski'}</textarea>
+      ></textarea>
 
       <button onClick={props.goToStageTwo}>Next</button>
     </div>
@@ -27,5 +28,6 @@ StageOne.propTypes = {
   changeTitle: React.PropTypes.func.isRequired,
   messageTitle: React.PropTypes.string.isRequired,
   message: React.PropTypes.string.isRequired,
+  goToStageTwo: React.PropTypes.func.isRequired,
 };
 export default StageOne;
