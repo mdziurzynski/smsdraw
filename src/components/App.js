@@ -30,7 +30,7 @@ export default withRouter(class App extends React.Component {
   state: Object = {
     stage: this.props.stage,
     stages: this.props.stages,
-    userData: this.props.smsAvailable,
+    userData: this.props.userData,
     messageTitle: '',
     message: 'Wylosowaliśmy dla Ciebie: ',
   };
